@@ -1,23 +1,23 @@
-#include <stdio.h>
+#include <stdio.h>  
 #include <stdlib.h>
 #include <limits.h>
 
 #define MAX_VERTICES 100
 #define MAX_EDGES 100
 
-struct Edge {
+typedef struct {
     int source;
     int destination;
     int weight;
-};
+} Edge;
 
-struct Graph {
+typedef struct {
     int numVertices;
     int numEdges;
-    struct Edge edges[MAX_EDGES];
-};
+    Edge edges[MAX_EDGES];
+} Graph;
 
-void bellmanFord(struct Graph* graph, int source) {
+void bellmanFord(Graph* graph, int source) {
     int distances[MAX_VERTICES];
     int i, j;
 
@@ -57,8 +57,8 @@ void bellmanFord(struct Graph* graph, int source) {
     }
 }
 
-int main() {
-    struct Graph graph = {
+void main() {
+    Graph graph = {
         .numVertices = 5,
         .numEdges = 8,
         .edges = {
@@ -73,7 +73,6 @@ int main() {
         }
     };
 
-    bellmanFord(&graph, 0);
-
-    return 0;
+    bellmanFord(&graph, 0);    
 }
+
